@@ -57,6 +57,8 @@ if uploaded_file is not None:
         # Kolom 2: Hasil prediksi + pie chart
         with col2:
             st.subheader(f"It's a {label} {emoji}")
+            confidence = max(cat_prob, dog_prob)
+            st.success(f"**Prediction Confidence (0-1): {confidence:.6f}**")
 
         st.write("")  
         st.write("")
@@ -88,4 +90,5 @@ if uploaded_file is not None:
             for i, v in enumerate(sizes):
                 ax2.text(v + 0.02, i, f"{v*100:.1f}%", va='center')
             ax2.set_xlabel("Probability")
+
             st.pyplot(fig2)
